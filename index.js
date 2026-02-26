@@ -37,6 +37,7 @@ class StorageService {
         const options = {};
         if (storageType === 'gridfs') {
             options.connectionString = process.env.GRIDFS_CONNECTION_STRING;
+            options.dbName = process.env.GRIDFS_DBNAME;
             options.bucket = process.env.GRIDFS_BUCKET;
         } else if (storageType === 'awss3') {
             options.region = process.env.AWS_S3_REGION;
