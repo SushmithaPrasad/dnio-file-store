@@ -3,7 +3,9 @@ const { MongoClient, GridFSBucket } = require('mongodb');
 function GridFSStorageService(options) {
 	this.options = options;
 	this.client = new MongoClient(options.connectionString);
-	this.bucket = new GridFSBucket(this.client, {
+	this.client.connect();
+    this.db = this.client.db(options.dbName); 
+	this.bucket = new GridFSBucket(this.db, {
 		bucketName: options.bucket
 	});
 }
